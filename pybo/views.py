@@ -2,7 +2,7 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.utils import timezone
 
-from pybo.forms import QuestionForm
+from pybo.forms import QuestionForm, AnswerForm
 from pybo.models import Question
 
 # 전체 목록 조회
@@ -30,3 +30,19 @@ def question_create(request):
         form = QuestionForm()
     context = {'form': form}
     return render(request, 'pybo/question_form.html', context)
+
+# 답변 등록
+def answer_create(request, question_id):
+    question = Question.objects.get(id=question_id)  # 질문 1개 가져오기
+    if request.method == "POST":
+        form = AnswerForm(request.POST)
+        if form.is_valid():
+            answer = form.save(commit=False)
+            answer.create_date = timezone.now()
+            answer.question = question  # 질문을 답변에 저장
+            form.save()
+            return redirect('pybo:detail', question_id=question.id)
+    else:
+        form = AnswerForm()
+    context = {'form': form}
+    return render(request, 'pybo:detail', context)
