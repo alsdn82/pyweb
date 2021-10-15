@@ -6,7 +6,7 @@
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
-    <a class="navbar-brand" href="{% url 'pybo:index' %}">Pybo</a>
+    <a class="navbar-brand" href="{% url 'pybo:index' %}">PyWeb</a>
     <!-- 햄버거 버튼 -->
     <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse"
             data-target="#navbarNav" aria-controls="navbarNav"
@@ -23,6 +23,9 @@
                 {% else %}
                 <a class="nav-link" href="{% url 'common:login' %}">로그인</a>
                 {% endif %}
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'pybo:board' %}">질문/답변</a>
             </li>
         </ul>
     </div>
