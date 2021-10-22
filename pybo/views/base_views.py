@@ -40,7 +40,3 @@ def detail(request, question_id):
     question = get_object_or_404(Question, pk=question_id)
     cotext = {'question': question}
     return render(request, 'pybo/detail.html', cotext)
-
-
-
-

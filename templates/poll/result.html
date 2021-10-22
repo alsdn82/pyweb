@@ -5,10 +5,10 @@
         <div class="col-6">
             <div class="card my-3">
                 <div class="card-body">
-                    <div class="card-title" style="fonr-size: 1.3rem">투표 결과</div>
+                    <div class="card-title" style="font-size: 1.3rem">투표 결과</div>
                     <div class="card-text" style="line-height: 3rem">
                         <ul>
-                            {% for choice in question.choice_set.all %}
+                            {% for choice in question.choice_set.all  %}
                             <li>
                                 {{ choice.choice_text }} -- {{ choice.votes }} votes
                             </li>
@@ -21,5 +21,4 @@
         </div>
     </div>
 </div>
-
 {% endblock %}

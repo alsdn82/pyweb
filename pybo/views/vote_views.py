@@ -6,8 +6,8 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.utils import timezone
 
-from pybo.forms import QuestionForm, AnswerForm
 from pybo.models import Question
+from pybo.forms import QuestionForm, AnswerForm
 
 @login_required(login_url='common:login')
 def vote_question(request, question_id):
@@ -15,5 +15,5 @@ def vote_question(request, question_id):
     if request.user == question.author:
         messages.error(request, "본인이 작성한 글은 추천할 수 없습니다.")
     else:
-        question.voter.add(request.user)
+        question.voter.add(request.user)  # 추천 추가(1증가)
     return redirect('pybo:detail', question_id=question.id)

@@ -4,6 +4,7 @@ from django import forms
 
 class UserForm(UserCreationForm):
     email = forms.EmailField(label="이메일")
+
     class Meta:
         model = User
-        fields = ("username", "email")  # 튜플 구조
+        fields = ("username", "email")  #튜플 구조
